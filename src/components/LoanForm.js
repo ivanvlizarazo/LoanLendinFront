@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import LoanNotification from "./LoanNotification";
 import Typing from "react-typing-animation";
-import useStyles from "../Styles/StylesLoanForm";
+import { useStylesLoanForm } from "../styles/Styles";
 
 require("dotenv").config();
 
 export default function LoanForm() {
-  const classes = useStyles();
+  const classes = useStylesLoanForm();
   const [data, setData] = useState({
     taxId: "",
     businessName: "",
@@ -28,28 +27,55 @@ export default function LoanForm() {
 
   const handleClose = () => {
     setOpen(false);
+    setData({
+      taxId: "",
+      businessName: "",
+      requestedAmount: "",
+    });
   };
 
   function handleChange(value, name) {
+    const copyError = { ...error };
+    var haveErrors = false;
     setData({ ...data, [name]: value });
-    setError({
-      taxId: false,
-      businessName: false,
-      requestedAmount: false,
-    });
+
+    for (const err in copyError) {
+      if (copyError[err] === true) {
+        haveErrors = true;
+        break;
+      }
+    }
+    if (haveErrors) {
+      setError({
+        taxId: false,
+        businessName: false,
+        requestedAmount: false,
+      });
+    }
   }
   function handleChangeNumber(value, name) {
-    console.log("value", value);
+    const copyError = { ...error };
+    var haveErrors = false;
+
     if (value <= 0) {
       setData({ ...data, [name]: Math.abs(value) });
     } else {
       setData({ ...data, [name]: value });
     }
-    setError({
-      taxId: false,
-      businessName: false,
-      requestedAmount: false,
-    });
+
+    for (const err in copyError) {
+      if (copyError[err] === true) {
+        haveErrors = true;
+        break;
+      }
+    }
+    if (haveErrors) {
+      setError({
+        taxId: false,
+        businessName: false,
+        requestedAmount: false,
+      });
+    }
   }
 
   function isEmpty(input) {
@@ -95,19 +121,15 @@ export default function LoanForm() {
     }
   };
 
-  console.log(data);
-
   return (
     <Container component="main" maxWidth="sm">
       <div className={classes.paper}>
-        <div>
-          <Typing speed={30} hideCursor>
-            <Typography variant="h3" className={classes.typography}>
-              Apply for your{" "}
-              <span className={classes.spanTypography}>loan</span>
-            </Typography>
-          </Typing>
-        </div>
+        <Typing speed={10} hideCursor>
+          <Typography variant="h3" className={classes.typography}>
+            Apply for your <span className={classes.spanTypography}>loan</span>
+          </Typography>
+        </Typing>
+
         <form className={classes.form} noValidate autoComplete="off">
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
@@ -123,7 +145,7 @@ export default function LoanForm() {
                 label="Tax id"
                 autoFocus
                 value={data.taxId}
-                InputProps={{ inputProps: { min: 0 } }}
+                inputprops={{ inputProps: { min: 0 } }}
                 InputLabelProps={{
                   className: classes.floatingLabelFocusStyle,
                 }}
@@ -164,7 +186,7 @@ export default function LoanForm() {
                 id="amount"
                 label="Requested Amount"
                 name="amount"
-                inputProps={{
+                inputprops={{
                   inputProps: {
                     min: 0,
                   },

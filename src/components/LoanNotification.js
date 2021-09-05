@@ -11,11 +11,11 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import ReportProblemOutlinedIcon from "@material-ui/icons/ReportProblemOutlined";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
-import useStyles from "../Styles/StylesLoanNotification";
+import { useStylesLoanNotification } from "../styles/Styles";
 
 export default function LoanNotification(props) {
   const { open, message } = props;
-  const classes = useStyles();
+  const classes = useStylesLoanNotification();
 
   return (
     <div>

@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) => ({
+export const useStylesLoanForm = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(6),
     display: "flex",
@@ -55,4 +55,62 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default useStyles;
+export const useStylesLoanNotification = makeStyles((theme) => ({
+  approved: {
+    background: "#3bc279",
+  },
+  undecided: {
+    background: "#3e85e4",
+  },
+  declined: {
+    background: "#e9594d",
+  },
+  text: {
+    color: "#fff",
+    fontWeight: "bold",
+  },
+  icon: {
+    marginRight: "0.3em",
+  },
+}));
+
+export const useStylesApp = makeStyles((theme) => ({
+  app: {
+    background:
+      "linear-gradient(141deg,rgba(7,36,72,.8) 23%,rgba(242,56,15,.802959) 100%)",
+    height: "100vh",
+  },
+}));
+
+export const useStylesAppBar = makeStyles((theme) => ({
+  image: {
+    width: "50%",
+    height: "auto",
+  },
+  imageXS: {
+    width: "55%",
+    height: "auto",
+  },
+  imageSM: {
+    width: "25%",
+    height: "auto",
+  },
+  grow: {
+    flexGrow: 2,
+  },
+  logo: {
+    width: "30%",
+  },
+  logoXS: {
+    width: "100%",
+  },
+  logoSM: {
+    width: "100%",
+  },
+  logoMD: {
+    width: "30%",
+  },
+  appBar: {
+    background: "#fff",
+  },
+}));
