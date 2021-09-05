@@ -8,6 +8,11 @@ CORS(app)
 def index():
     return app.send_static_file("index.html")
 
+@app.route('/test', methods=["POST"])
+def requested_amount():
+    return {'value':"test"}
+    
+
 @app.route('/requested_amount', methods=["POST"])
 def requested_amount():
     requested_amount = request.json["requestedAmount"]
