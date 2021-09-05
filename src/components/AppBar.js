@@ -4,7 +4,40 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-import { useStylesAppBar } from "../styles/Styles";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStylesAppBar = makeStyles((theme) => ({
+  image: {
+    width: "50%",
+    height: "auto",
+  },
+  imageXS: {
+    width: "55%",
+    height: "auto",
+  },
+  imageSM: {
+    width: "25%",
+    height: "auto",
+  },
+  grow: {
+    flexGrow: 2,
+  },
+  logo: {
+    width: "30%",
+  },
+  logoXS: {
+    width: "100%",
+  },
+  logoSM: {
+    width: "100%",
+  },
+  logoMD: {
+    width: "30%",
+  },
+  appBar: {
+    background: "#fff",
+  },
+}));
 
 export default function AppBarLendingFront(props) {
   const classes = useStylesAppBar();
