@@ -1,16 +1,18 @@
 from flask import Flask,request
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/requested_amount', methods=["POST"])
-def main():
+def requested_amount():
     requested_amount = request.json["requestedAmount"]
     if(requested_amount > 50000):
         return {'value':"Declined"}
     elif(requested_amount == 50000):
         return {'value':"Undecided"}
     elif(requested_amount < 50000):
-        return {'value':"Approbed"}
+        return {'value':"Approved"}
 
 
 
