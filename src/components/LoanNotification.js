@@ -11,7 +11,26 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import ReportProblemOutlinedIcon from "@material-ui/icons/ReportProblemOutlined";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
-import { useStylesLoanNotification } from "../styles/Styles";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStylesLoanNotification = makeStyles((theme) => ({
+  approved: {
+    background: "#3bc279",
+  },
+  undecided: {
+    background: "#3e85e4",
+  },
+  declined: {
+    background: "#e9594d",
+  },
+  text: {
+    color: "#fff",
+    fontWeight: "bold",
+  },
+  icon: {
+    marginRight: "0.3em",
+  },
+}));
 
 export default function LoanNotification(props) {
   const { open, message } = props;
